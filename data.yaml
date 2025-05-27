@@ -1,0 +1,6 @@
+path: /kaggle/working/combined_warehouse_dataset
+train: train/images
+val: valid/images
+test: test/images
+nc: 7
+names: [box, box_broken, forklift, open_package, package, pallets, person]
