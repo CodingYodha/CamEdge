@@ -1,6 +1,5 @@
 streamlit
-cv2
-ultralytics 
+opencv-python
+ultralytics
 numpy
 tempfile
-os
