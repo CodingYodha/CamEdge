@@ -5,6 +5,7 @@ import numpy as np
 import tempfile
 import os
 
+st.set_page_config(layout="wide")
 # --- All your helper functions from the script above ---
 # (is_centroid_in_zone, draw_text_with_background, etc.)
 # --- And the main processing function: detect_and_custom_track_video_streamlit ---
@@ -220,7 +221,7 @@ def process_video_streamlit(video_bytes, selected_class, transfer_zone_rect, con
 
 
 # --- Streamlit UI ---
-st.set_page_config(layout="wide")
+
 
 # Logo - place logo.png in the same directory as app.py
 try:
