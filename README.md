@@ -1,10 +1,13 @@
 # CamEdge - Enhanced Item Tracking & Counting App
 
-**Developed by [ElevateTrust.AI Solutions](https://www.elevatetrust.ai)** <!-- Optional: Link to your company website -->
+**Developed by: Shivaprasad**
+**At: [ElevateTrust.AI Solutions](https://www.elevatetrust.ai)** <!-- Optional: Link to your company website -->
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-camedge-streamlit-app-url.com) <!-- Replace with your actual Streamlit sharing URL if deployed -->
+[![Streamlit App](https://your-camedge-streamlit-app-url.com/badge.svg)](https://your-camedge-streamlit-app-url.com) <!-- Replace with your actual Streamlit sharing URL if deployed -->
+<!-- Or use the default Streamlit badge: -->
+<!-- [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-camedge-streamlit-app-url.com) -->
 
-CamEdge is a powerful and user-friendly Streamlit application designed for real-time object detection, tracking, and counting of items within video feeds. It leverages state-of-the-art computer vision techniques to provide insights into item movement, making it suitable for various inventory management, logistics, and monitoring scenarios.
+CamEdge is a powerful and user-friendly Streamlit application designed for real-time object detection, tracking, and counting of items within video feeds. It leverages state-of-the-art computer vision techniques to provide insights into item movement, making it suitable for various inventory management, logistics, and monitoring scenarios. This project was developed by Shivaprasad during his work at ElevateTrust.AI Solutions.
 
 ## Key Features
 
@@ -54,7 +57,7 @@ CamEdge is a powerful and user-friendly Streamlit application designed for real-
 
 ## Model
 
-The application currently uses a pre-trained YOLO model named `best_bag_box.pt`. This model is expected to be in the same directory as the main application script (`camedge.txt` or `app.py`). It is trained to detect "bags" and "boxes". To use a different model, you would need to:
+The application currently uses a pre-trained YOLO model named `best_bag_box.pt`. This model is expected to be in the same directory as the main application script (`camedge.txt`, `app.py`, or `camedge.py`). It is trained to detect "bags" and "boxes". To use a different model, you would need to:
 1.  Place your new `.pt` model file in the application directory.
 2.  Update the `MODEL_PATH` variable in the script.
 3.  Potentially adjust the class name remapping logic or `AVAILABLE_CLASSES` if your model has different class names.
@@ -63,7 +66,7 @@ The application currently uses a pre-trained YOLO model named `best_bag_box.pt`.
 
 1.  **Clone the repository (or download the script):**
     ```bash
-    git clone https://github.com/your-username/CamEdge.git # Replace with your actual repo URL
+    git clone https://github.com/your-username/CamEdge.git # Replace with the actual repo URL
     cd CamEdge
     ```
 2.  **Create and activate a virtual environment (recommended):**
@@ -75,11 +78,13 @@ The application currently uses a pre-trained YOLO model named `best_bag_box.pt`.
     source venv/bin/activate
     ```
 3.  **Install dependencies:**
-    Make sure you have a `requirements.txt` file with the necessary packages. If not, you'll need to create one based on the imports in the script (e.g., `streamlit`, `opencv-python`, `ultralytics`, `numpy`, `Pillow`).
+    A `requirements.txt` file should ideally be present in the repository.
     ```bash
     pip install -r requirements.txt
-    # Or install manually:
-    # pip install streamlit opencv-python ultralytics numpy Pillow
+    ```
+    If `requirements.txt` is not available, you can install the primary packages manually (ensure versions are compatible):
+    ```bash
+    pip install streamlit opencv-python ultralytics numpy Pillow
     ```
     *Note: `ultralytics` often has specific PyTorch version dependencies. Ensure your environment is compatible or install PyTorch separately first if needed.*
 
@@ -88,11 +93,10 @@ The application currently uses a pre-trained YOLO model named `best_bag_box.pt`.
 ## Running the Application
 
 1.  Navigate to the project directory in your terminal.
-2.  Run the Streamlit application:
+2.  Run the Streamlit application (replace `your_script_name.py` with the actual Python file name, e.g., `camedge.py` or `app.py`):
     ```bash
     streamlit run your_script_name.py
     ```
-    (If you've named your main Python file `camedge.py` or `app.py`, use that name).
 3.  The application will open in your default web browser.
 
 ## Usage Guide
@@ -127,7 +131,6 @@ The application currently uses a pre-trained YOLO model named `best_bag_box.pt`.
     *   Adjust the "Detection Confidence Threshold". Lower values detect more but might include false positives. Higher values are more accurate but might miss items.
     *   Ensure good lighting conditions for the camera.
     *   The ROI should be placed strategically where items clearly enter and exit.
-*   **`use_column_width` Deprecation Warning:** This has been addressed in the code by using `use_container_width` for `st.image`. If it reappears, it might be from a Streamlit version change or another component.
 *   **Memory Issues for Long Videos:** Processing very long or high-resolution videos can be memory-intensive. Consider processing videos in chunks if necessary for very large files (this functionality is not built-in).
 *   **Error Recovery:** The application includes basic error handling. If an unrecoverable error occurs, you might need to restart the Streamlit app. Check the terminal for detailed error messages.
 
@@ -142,25 +145,26 @@ The application currently uses a pre-trained YOLO model named `best_bag_box.pt`.
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute, please fork the repository, make your changes, and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+While this project was primarily developed by Shivaprasad at ElevateTrust.AI, contributions or suggestions for improvement are welcome! If you'd like to contribute:
+1.  Fork the Project.
+2.  Create your Feature Branch (`git checkout -b feature/YourAmazingFeature`).
+3.  Commit your Changes (`git commit -m 'Add some YourAmazingFeature'`).
+4.  Push to the Branch (`git push origin feature/YourAmazingFeature`).
+5.  Open a Pull Request.
+   Please ensure to discuss significant changes by opening an issue first.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE.txt) - see the `LICENSE.txt` file for details (or choose an appropriate license for your project).
+This project is licensed under the [MIT License](LICENSE.txt) (or specify another license if preferred). See the `LICENSE.txt` file for details.
 
 ## Acknowledgements
 
-*   **Streamlit Team:** For the awesome framework.
+*   **ElevateTrust.AI Solutions:** For providing the environment and support for this project's development.
+*   **Streamlit Team:** For the excellent web application framework.
 *   **Ultralytics Team:** For the YOLO models and library.
 *   **OpenCV Community:** For the comprehensive computer vision library.
 
 ---
 
-**CamEdge by ElevateTrust.AI Solutions**
+**CamEdge - Developed by Shivaprasad at ElevateTrust.AI Solutions**
 *Empowering Vision with Intelligence*
