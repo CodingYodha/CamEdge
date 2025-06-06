@@ -317,9 +317,9 @@ def live_stream_processing_loop(selected_class, transfer_zone_rect, conf_thresho
              st.info("Live stream stopped.")
         st.session_state.live_stream_active = False 
 
-try: st.image("logo.png", width=150) 
-except Exception: st.markdown("### 📦 Enhanced Item Tracking App") 
+st.image("logo.png", width=150) 
 st.title("CamEdge")
+st.markdown("## Item Tracking and Counting App")
 
 default_states = {
     'roi_coords_manual': {"x": 100, "y": 100, "w": 300, "h": 200},
