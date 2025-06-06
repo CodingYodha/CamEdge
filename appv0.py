@@ -6,6 +6,7 @@ import tempfile
 import os
 from PIL import Image
 import time
+import base64
 
 st.set_page_config(layout="wide", page_title="Enhanced Item Tracking App")
 
@@ -321,14 +322,26 @@ def live_stream_processing_loop(selected_class, transfer_zone_rect, conf_thresho
 # st.title("CamEdge")
 # st.markdown("#### Item Tracking and Counting App")
 
+
 # --- Centering the Logo and Title ---
-col1, col2, col3 = st.columns([1, 0.5, 1]) 
+logo_path = "resources/Original logo WHITE-01.png"
+col1, col2, col3 = st.columns([1, 2, 1]) 
 with col2: # Content in the middle column
-    try:
-        st.image("logo.png", width=210)
-    except Exception:
-        st.markdown("<h3 style='text-align: center;'>📦 Enhanced Item Tracking App</h3>", unsafe_allow_html=True)
-    st.markdown("<h1 style='text-align: center;'>CamEdge</h1>", unsafe_allow_html=True)
+    with st.container():
+        st.markdown('<div class="centered-header-container">', unsafe_allow_html=True)
+        try:
+            if os.path.exists(logo_path):
+                    st.markdown(
+                        f"""
+                        <div style="text-align: center;">
+                            <img src="data:image/png;base64,{base64.b64encode(open(logo_path, "rb").read()).decode()}" alt="Logo" width="210">
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+        except Exception:
+            st.markdown("<h3 style='text-align: center;'>📦 Enhanced Item Tracking App</h3>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center;'>CamEdge - Item Tracking and Counting System</h1>", unsafe_allow_html=True)
 
 
 default_states = {
@@ -612,7 +625,25 @@ else:  # Live Stream Mode
         elif st.session_state.live_stream_state == "initial": st.info("Feed & metrics here on stream start.")
         else: st.info("Configure & start stream.")
 
-st.markdown("---"); st.caption("Enhanced App by ElevateTrust.AI Solutions")
+footer = """
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #0E1117;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        font-size: 12px;
+    }
+</style>
+<div class="footer">
+    <p>© 2025 ElevateTrust.Ai.  All rights reserved.</p>
+</div>
+"""
+st.markdown(footer, unsafe_allow_html=True)
 st.sidebar.markdown("---"); st.sidebar.header("🔧 Additional Utilities") 
 if st.sidebar.button("📷 Camera Test"):
     st.sidebar.info("Testing camera...")
