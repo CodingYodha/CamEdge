@@ -317,9 +317,19 @@ def live_stream_processing_loop(selected_class, transfer_zone_rect, conf_thresho
              st.info("Live stream stopped.")
         st.session_state.live_stream_active = False 
 
-st.image("logo.png", width=150) 
-st.title("CamEdge")
-st.markdown("# Item Tracking and Counting App")
+# st.image("logo.png", width=150) 
+# st.title("CamEdge")
+# st.markdown("#### Item Tracking and Counting App")
+
+# --- Centering the Logo and Title ---
+col1, col2, col3 = st.columns([1, 0.5, 1]) 
+with col2: # Content in the middle column
+    try:
+        st.image("logo.png", width=210)
+    except Exception:
+        st.markdown("<h3 style='text-align: center;'>📦 Enhanced Item Tracking App</h3>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>CamEdge</h1>", unsafe_allow_html=True)
+
 
 default_states = {
     'roi_coords_manual': {"x": 100, "y": 100, "w": 300, "h": 200},
