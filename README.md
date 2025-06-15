@@ -16,9 +16,9 @@ CamEdge is a powerful and user-friendly Streamlit application designed for real-
 *   **User-Friendly Interface:** Provides intuitive controls, real-time visual feedback with detections, and live metrics for item counts.
 *   **Utilities:** Includes options to download processed videos, test camera connectivity, and a debug mode for advanced insights.
 
-To run the following appv14.py
-Make sure to install all the necessary libraries mentioned in requirements.txt
-then run the following code
-python -m streamlit run appv14.py
-then Enjoy!
+To run the following appv14.py <br>
+Make sure to install all the necessary libraries mentioned in requirements.txt <br>
+then run the following code <br>
+python -m streamlit run appv14.py <br>
+then Enjoy! <br>
 CamEdge aims to simplify the process of monitoring and quantifying item flow through a defined space, offering a practical tool for various operational needs.
