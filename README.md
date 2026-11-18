@@ -21,13 +21,9 @@ The training run saved in [`metrci_results/`](metrci_results) used YOLOv8x at 64
 |---|---|---|---|
 | 0.915 | 0.858 | 0.904 | 0.797 |
 
-[TODO: say whether `best_bag_box.pt` comes from this run, and add counting accuracy on a test video]
-
 ![Training curves](metrci_results/results.png)
 
 ![Normalized confusion matrix](metrci_results/confusion_matrix_normalized.png)
-
-[TODO: add a short demo GIF of the app counting items]
 
 ## How to run
 
