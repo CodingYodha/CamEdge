@@ -1,24 +1,49 @@
-# CamEdge - Enhanced Item Tracking & Counting App
+# CamEdge
 
-**Developed by: Shivaprasad**
-*(Developed during work at ElevateTrust.AI Solutions)*
+Real-time detection, tracking and counting of items (bags and boxes) in video. I built it during my ML & Computer Vision internship at ElevateTrust.AI.
 
-## Project Description
+## Problem
 
-CamEdge is a powerful and user-friendly Streamlit application designed for real-time object detection, tracking, and counting of items within video feeds. It leverages state-of-the-art computer vision techniques to provide insights into item movement, making it suitable for various inventory management, logistics, and monitoring scenarios.
+In a loading area you want to know how many items were loaded and unloaded, straight from a camera feed. Counting by detection alone counts the same item many times, once per frame. CamEdge tracks each item and only counts it when it crosses a zone you define.
 
-**Key capabilities include:**
+## How it works
 
-*   **Versatile Processing:** Handles both uploaded video files (MP4, AVI, MOV, MKV) and live webcam streams.
-*   **Advanced Object Detection & Tracking:** Utilizes a pre-trained YOLO model (specifically `best_bag_box.pt` for "bags" and "boxes") coupled with ByteTrack for robust item tracking and unique ID assignment.
-*   **Intelligent Transfer Zone Counting:** Allows users to define a Region of Interest (ROI) or "Transfer Zone" to count items as "Loaded" (entering the zone) or "Unloaded" (exiting the zone after being inside).
-*   **Flexible ROI Configuration:** Offers manual input and percentage-based methods for ROI definition, including a frame capture feature for live stream ROI setup.
-*   **User-Friendly Interface:** Provides intuitive controls, real-time visual feedback with detections, and live metrics for item counts.
-*   **Utilities:** Includes options to download processed videos, test camera connectivity, and a debug mode for advanced insights.
+1. **Detect:** each frame goes through a YOLO model (`best_bag_box.pt`) trained to find bags and boxes.
+2. **Track:** ByteTrack gives every item a track ID, so the same item keeps the same ID across frames.
+3. **Count:** you draw a "transfer zone" (region of interest). An item that enters the zone is counted as **Loaded**. An item that leaves after being inside is counted as **Unloaded**.
+4. **App:** a Streamlit interface that works with uploaded videos (MP4, AVI, MOV, MKV) or a live webcam. It shows detections and live counts, lets you set the zone by hand or by percentages (with a frame capture for live streams), and can download the processed video. There is also a camera test and a debug mode.
 
-To run the following appv14.py <br>
-Make sure to install all the necessary libraries mentioned in requirements.txt <br>
-then run the following code <br>
-python -m streamlit run appv14.py <br>
-then Enjoy! <br>
-CamEdge aims to simplify the process of monitoring and quantifying item flow through a defined space, offering a practical tool for various operational needs.
+## Results
+
+The training run saved in [`metrci_results/`](metrci_results) used YOLOv8x at 640 px for 35 epochs, on a 7-class warehouse dataset (box, box_broken, forklift, open_package, package, pallets, person). Final-epoch validation metrics from `results.csv`:
+
+| Precision | Recall | mAP@50 | mAP@50-95 |
+|---|---|---|---|
+| 0.915 | 0.858 | 0.904 | 0.797 |
+
+[TODO: say whether `best_bag_box.pt` comes from this run, and add counting accuracy on a test video]
+
+![Training curves](metrci_results/results.png)
+
+![Normalized confusion matrix](metrci_results/confusion_matrix_normalized.png)
+
+[TODO: add a short demo GIF of the app counting items]
+
+## How to run
+
+```bash
+pip install -r requirements.txt
+python -m streamlit run appv14.py
+```
+
+## Repo layout
+
+| Path | What it is |
+|---|---|
+| `appv14.py` | Final Streamlit app |
+| `best_bag_box.pt` | Trained detection weights |
+| `Initial app versions/` | Earlier versions of the app |
+| `notebooks/` | Training and counting experiments |
+| `metrci_results/` | Training curves and metrics |
+| `yaml/` | Training config (`args.yaml`, `data.yaml`) |
+| `Camedge report.pdf` | Project report |
